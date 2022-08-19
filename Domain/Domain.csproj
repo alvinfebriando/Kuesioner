@@ -4,6 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Kuesioner.Domain</RootNamespace>
+        <AssemblyName>Kuesioner.Domain</AssemblyName>
     </PropertyGroup>
 
 </Project>
