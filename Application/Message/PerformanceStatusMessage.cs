@@ -3,9 +3,9 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Message;
 
-public class PerformanceStatus : IMessage
+public class PerformanceStatusMessage : IMessage
 {
-    public PerformanceStatus(string lecturer, double averageScore, ILexicalization lex)
+    public PerformanceStatusMessage(string lecturer, double averageScore, ILexicalization lex)
     {
         Lecturer = lecturer;
         AverageScore = averageScore;
