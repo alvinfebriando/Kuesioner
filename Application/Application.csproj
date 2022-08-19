@@ -7,5 +7,13 @@
         <RootNamespace>Kuesioner.Application</RootNamespace>
         <AssemblyName>Kuesioner.Application</AssemblyName>
     </PropertyGroup>
-    
+
+    <ItemGroup>
+        <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Numpy" Version="3.10.1.30" />
+    </ItemGroup>
+
 </Project>
