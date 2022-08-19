@@ -2,7 +2,7 @@
 
 public class Answer
 {
-    public Answer(double score,Question question)
+    public Answer(double score, Question question)
     {
         Score = score;
         Question = question;
