@@ -2,5 +2,5 @@
 
 public interface IMultiLexicalizationMessage
 {
-    public void Lexicalization(List<IPointMessage> messages);
+    public void Lexicalization(IList<IPointMessage> messages);
 }

@@ -34,7 +34,7 @@ public class BadPointMessage : IMessage, IPointMessage, IMultiLexicalizationMess
         else if (option.Desc == "no good") Complement[0] = Util.GetRandom(new List<string> { "dan juga", "serta" });
     }
 
-    public void Lexicalization(List<IPointMessage> messages)
+    public void Lexicalization(IList<IPointMessage> messages)
     {
         if (messages.Count == 2)
         {

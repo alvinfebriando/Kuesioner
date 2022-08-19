@@ -34,7 +34,7 @@ public class AdviceMessage: IMessage,IMultiLexicalizationMessage
         throw new NotImplementedException();
     }
 
-    public void Lexicalization(List<IPointMessage> messages)
+    public void Lexicalization(IList<IPointMessage> messages)
     {
         var advice = Util.GetRandom(Advices);
         if (messages.Count == 2)
