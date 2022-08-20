@@ -24,6 +24,7 @@ public class GoodPointMessage : IMessage, IPointMessage, IMultiLexicalizationMes
             $"{Complement[0]} {Lecturer} sukses dalam hal {Answer.Question.Title}, hal ini dapat dilihat dari {Lex.RndNilai()} rata-rata sebesar {Answer.Score}",
             $"{Complement[0]} untuk bagian {Answer.Question.Title}, {Lecturer} sudah menjalankannya dengan baik, adapun nilai yang didapatkan adalah {Answer.Score}"
         };
+        Core = Util.GetRandom(Sentences);
     }
 
     public void EmbedComplement(Option option)
@@ -55,6 +56,8 @@ public class GoodPointMessage : IMessage, IPointMessage, IMultiLexicalizationMes
                 $"{Complement[0]} untuk bagian {Answer.Question.Title},  {second.Answer.Question.Title}, dan {third.Answer.Question.Title}, {Lecturer} sudah menjalankannya dengan baik, adapun nilai yang didapatkan masing-masingnya adalah {Answer.Score}, {second.Answer.Score}, dan {third.Answer.Score}"
             };
         }
+
+        Core = Util.GetRandom(Sentences);
     }
 
     public string Lecturer { get; set; }
