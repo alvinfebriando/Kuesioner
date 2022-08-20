@@ -3,7 +3,7 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.MicroPlanning;
 
-public class MicroPlanning: IMicroPlanning
+public class MicroPlanning : IMicroPlanning
 {
     public IList<ISpec> CreateMPlan(DPlan dPlan)
     {

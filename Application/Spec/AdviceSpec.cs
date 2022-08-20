@@ -4,7 +4,7 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Spec;
 
-public class AdviceSpec: ISpec
+public class AdviceSpec : ISpec
 {
     public AdviceSpec(string lecturer, Point badPoint, IList<string> structure)
     {
@@ -14,24 +14,15 @@ public class AdviceSpec: ISpec
         Lex = new Lexicalization.Lexicalization();
     }
 
-    public IList<IMessage> Order { get; set; } = new List<IMessage>();
-    public IList<string> Sentences { get; set; } = new List<string>();
     public string Lecturer { get; set; }
     public Point BadPoint { get; set; }
     public IList<string> Structure { get; set; }
-    private IList<IMessage> Advices { get; set; } = new List<IMessage>();
-    private ILexicalization Lex { get; set; }
-    private void Transform()
-    {
-        if (Structure[4] == "no bad")
-        {
-            Advices.Add(new NoAdviceMessage(Lecturer, BadPoint.Min.Question.Advices, Lex));
-        }
-        foreach (var answer in BadPoint.Bad)
-        {
-            Advices.Add(new AdviceMessage(Lecturer, answer.Question.Advices, Lex));
-        }
-    }
+    private IList<IMessage> Advices { get; } = new List<IMessage>();
+    private ILexicalization Lex { get; }
+
+    public IList<IMessage> Order { get; set; } = new List<IMessage>();
+    public IList<string> Sentences { get; set; } = new List<string>();
+
     public void Ordering()
     {
         Order.Add(Advices[0]);
@@ -49,5 +40,11 @@ public class AdviceSpec: ISpec
         Ordering();
         Aggregate();
         return Sentences;
+    }
+
+    private void Transform()
+    {
+        if (Structure[4] == "no bad") Advices.Add(new NoAdviceMessage(Lecturer, BadPoint.Min.Question.Advices, Lex));
+        foreach (var answer in BadPoint.Bad) Advices.Add(new AdviceMessage(Lecturer, answer.Question.Advices, Lex));
     }
 }

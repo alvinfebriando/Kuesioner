@@ -3,7 +3,7 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.DocumentPlanning;
 
-public class DocumentPlanning: IDocumentPlanning
+public class DocumentPlanning : IDocumentPlanning
 {
     public DPlan CreateDPlan(string lecturer, int respondentCount, IList<Answer> answers)
     {

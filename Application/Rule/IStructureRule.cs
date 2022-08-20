@@ -1,5 +1,4 @@
-﻿
-using Kuesioner.Domain.Entities;
+﻿using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Rule;
 

@@ -2,7 +2,7 @@
 
 namespace Kuesioner.Application.Rule;
 
-public class StructureRule: IStructureRule
+public class StructureRule : IStructureRule
 {
     public IList<string> Rule(Point point)
     {
@@ -17,7 +17,7 @@ public class StructureRule: IStructureRule
             output.Add("performance");
             output.Add("score");
         }
-        
+
         if (IsGoodEmpty(point) && IsBadEmpty(point))
         {
             if (IsGoodFirst())
@@ -81,7 +81,7 @@ public class StructureRule: IStructureRule
 
         return output;
     }
-    
+
     private static bool IsGoodFirst()
     {
         return Util.GetRandom(new List<int> { 0, 1 }) == 0;

@@ -4,7 +4,7 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Spec;
 
-public class OverviewSpec: ISpec
+public class OverviewSpec : ISpec
 {
     public OverviewSpec(string lecturer, double averageScore, int respondentCount, IList<string> structure)
     {
@@ -15,13 +15,15 @@ public class OverviewSpec: ISpec
         Lex = new Lexicalization.Lexicalization();
     }
 
-    public IList<IMessage> Order { get; set; } = new List<IMessage>();
-    public IList<string> Sentences { get; set; } = new List<string>();
     public string Lecturer { get; set; }
     public double AverageScore { get; set; }
     public int RespondentCount { get; set; }
     public IList<string> Structure { get; set; }
-    private ILexicalization Lex { get; set; }
+    private ILexicalization Lex { get; }
+
+    public IList<IMessage> Order { get; set; } = new List<IMessage>();
+    public IList<string> Sentences { get; set; } = new List<string>();
+
     public void Ordering()
     {
         var scoreMsg = new ScoreRespondentMessage(Lecturer, AverageScore, RespondentCount, Lex);

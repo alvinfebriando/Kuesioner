@@ -4,16 +4,11 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Spec;
 
-public class PointSpec: ISpec
+public class PointSpec : ISpec
 {
-    private readonly IList<IPointMessage> _goodPoints = new List<IPointMessage>();
     private readonly IList<IPointMessage> _badPoints = new List<IPointMessage>();
-    public string Lecturer { get; set; }
-    public Point Point { get; set; }
-    public IList<string> Structure { get; set; }
-    public IList<IMessage> Order { get; set; } = new List<IMessage>();
-    public IList<string> Sentences { get; set; } = new List<string>();
-    private ILexicalization Lex { get; set; }
+    private readonly IList<IPointMessage> _goodPoints = new List<IPointMessage>();
+
     public PointSpec(string lecturer, Point point, IList<string> structure)
     {
         Lecturer = lecturer;
@@ -22,8 +17,15 @@ public class PointSpec: ISpec
         Lex = new Lexicalization.Lexicalization();
     }
 
+    public string Lecturer { get; set; }
+    public Point Point { get; set; }
+    public IList<string> Structure { get; set; }
+    private ILexicalization Lex { get; }
+    public IList<IMessage> Order { get; set; } = new List<IMessage>();
+    public IList<string> Sentences { get; set; } = new List<string>();
+
     public void Ordering()
-    {   
+    {
         if (IsGnG())
         {
             Order.Add((IMessage)_goodPoints[0]);
@@ -64,7 +66,7 @@ public class PointSpec: ISpec
         Aggregate();
         return Sentences;
     }
-    
+
     private void Transform()
     {
         if (Structure.Contains("no good")) _goodPoints.Add(new NoGoodPointMessage(Lecturer, Point.Max, Lex));
