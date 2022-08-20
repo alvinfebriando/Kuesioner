@@ -47,7 +47,7 @@ public class BadPointMessage : IMessage, IPointMessage, IMultiLexicalizationMess
             };
             Core = Util.GetRandom(Sentences);
         }
-        else if (messages.Count == 3)
+        else if (messages.Count >= 3)
         {
             var second = messages[1];
             var third = messages[2];
