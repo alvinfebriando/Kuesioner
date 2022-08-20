@@ -12,10 +12,11 @@ public class BadPointMessage : IMessage, IPointMessage, IMultiLexicalizationMess
         Lex = lex;
     }
 
+    private ILexicalization Lex { get; }
+
     public string Core { get; set; } = "";
-    public IList<string> Complement { get; set; } = new List<string>();
+    public IList<string> Complement { get; set; } = new List<string> { "" };
     public IList<string> Sentences { get; set; } = new List<string>();
-    private ILexicalization Lex { get; set; }
 
     public void Lexicalization()
     {

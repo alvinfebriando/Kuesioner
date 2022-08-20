@@ -3,7 +3,7 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Message;
 
-public class NoGoodPointMessage: IMessage, IPointMessage
+public class NoGoodPointMessage : IMessage, IPointMessage
 {
     public NoGoodPointMessage(string lecturer, Answer answer, ILexicalization lex)
     {
@@ -12,10 +12,12 @@ public class NoGoodPointMessage: IMessage, IPointMessage
         Lex = lex;
     }
 
+    private ILexicalization Lex { get; }
+
     public string Core { get; set; } = "";
-    public IList<string> Complement { get; set; } = new List<string>();
+    public IList<string> Complement { get; set; } = new List<string> { "" };
     public IList<string> Sentences { get; set; } = new List<string>();
-    private ILexicalization Lex { get; set; }
+
     public void Lexicalization()
     {
         Sentences = new List<string>

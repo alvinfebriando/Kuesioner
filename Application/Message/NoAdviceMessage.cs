@@ -3,7 +3,7 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Message;
 
-public class NoAdviceMessage: IMessage
+public class NoAdviceMessage : IMessage
 {
     public NoAdviceMessage(string lecturer, IList<string> advices, ILexicalization lex)
     {
@@ -12,12 +12,14 @@ public class NoAdviceMessage: IMessage
         Lex = lex;
     }
 
-    public string Core { get; set; } = "";
-    public IList<string> Complement { get; set; } = new List<string>();
-    public IList<string> Sentences { get; set; } = new List<string>();
     public string Lecturer { get; set; }
-    public IList<string>Advices { get; set; }
-    private ILexicalization Lex { get; set; }
+    public IList<string> Advices { get; set; }
+    private ILexicalization Lex { get; }
+
+    public string Core { get; set; } = "";
+    public IList<string> Complement { get; set; } = new List<string> { "" };
+    public IList<string> Sentences { get; set; } = new List<string>();
+
     public void Lexicalization()
     {
         var advice = Util.GetRandom(Advices);

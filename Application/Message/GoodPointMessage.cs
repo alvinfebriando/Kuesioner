@@ -14,7 +14,7 @@ public class GoodPointMessage : IMessage, IPointMessage, IMultiLexicalizationMes
 
     private ILexicalization Lex { get; }
     public string Core { get; set; } = "";
-    public IList<string> Complement { get; set; } = new List<string>();
+    public IList<string> Complement { get; set; } = new List<string> { "" };
     public IList<string> Sentences { get; set; } = new List<string>();
 
     public void Lexicalization()
