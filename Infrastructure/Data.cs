@@ -46,31 +46,31 @@ public class Data
 
     public static List<Question> Questions { get; } = new()
     {
-        new Question( "rencana dan kontrak kuliah", new List<string>
+        new Question("rencana kontrak kuliah", new List<string>
         {
             "menyampaikan materi sesuai dengan rencana pembelajaran",
             "membuat kontrak perkuliahan"
         }),
-        new Question( "kesempatan bertanya", new List<string>
+        new Question("kesempatan bertanya", new List<string>
         {
             "memberikan kesempatan bertanya baik di awal maupun di akhir sesi perkuliahan"
         }),
-        new Question( "feedback dan transparansi nilai", new List<string>
+        new Question("feedback transparansi nilai", new List<string>
         {
             "memberikan nilai secara transparan",
             "memberikan pembahasan untuk beberapa pertanyaan yang sulit"
         }),
-        new Question( "kedisiplinan waktu", new List<string>
+        new Question("kedisiplinan waktu", new List<string>
         {
             "tepat waktu saat masuk perkuliahan",
             "waktu perkuliahan tidak melebihi sesi yang ada"
         }),
-        new Question( "penguasaan materi", new List<string>
+        new Question("penguasaan materi", new List<string>
         {
             "melakukan review materi terlebih dahulu",
             "mencari referensi terkit materi yang diajarkan"
         }),
-        new Question( "penguasaan elearning", new List<string>
+        new Question("penguasaan elearning", new List<string>
         {
             "menggunakan video conference untuk pertemuan daring",
             "menggunakan fitur forum untuk sesi diskusi",
