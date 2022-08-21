@@ -48,7 +48,8 @@ public class AdviceMessage : IMessage, IMultiLexicalizationMessage
                 $"Sistem menyarankan {Lecturer} untuk melakukan {advice} dan {second} untuk hasil yang lebih optimal"
             };
             Core = Util.GetRandom(Sentences);
-        }else if (messages.Count >= 3)
+        }
+        else if (messages.Count >= 3)
         {
             var second = Util.GetRandom(messages[1].Answer.Question.Advices);
             var third = Util.GetRandom(messages[2].Answer.Question.Advices);
