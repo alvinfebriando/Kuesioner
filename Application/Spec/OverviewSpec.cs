@@ -35,7 +35,7 @@ public class OverviewSpec : ISpec
 
     public void Aggregate()
     {
-        if (Order[0].GetType() == typeof(ScoreRespondentMessage))
+        if (Structure[0] == "score")
         {
             Order[0].EmbedComplement(new Option("first"));
             Order[1].EmbedComplement(new Option("second"));
