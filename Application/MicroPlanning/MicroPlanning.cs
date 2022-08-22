@@ -18,9 +18,10 @@ public class MicroPlanning : IMicroPlanning
         var structure = DPlan.Structure;
         var overview = new OverviewSpec(content.Lecturer, content.AverageScore, content.RespondentCount, structure);
         var point = new PointSpec(content.Lecturer, content.Point, structure);
+        var advice = new AdviceSpec(content.Lecturer, point.Point, structure);
         return new List<ISpec>
         {
-            overview, point
+            overview, point, advice
         };
     }
 }
