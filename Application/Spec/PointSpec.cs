@@ -40,21 +40,56 @@ public class PointSpec : ISpec
 
     public void Aggregate()
     {
-        var first = (IMultiLexicalizationMessage)Order[0];
-        var second = (IMultiLexicalizationMessage)Order[1];
         if (IsGnG())
         {
-            first.Lexicalization(_goodPoints);
-            second.Lexicalization(_badPoints);
+            if (_goodPoints.Count > 1)
+            {
+                var first = (IMultiLexicalizationMessage)Order[0];
+                first.Lexicalization(_goodPoints);
+                Order[0] = (IMessage)first;
+            }
+            else
+            {
+                Order[0].Lexicalization();
+            }
+
+            if (_badPoints.Count > 1)
+            {
+                var second = (IMultiLexicalizationMessage)Order[1];
+                second.Lexicalization(_badPoints);
+                Order[1] = (IMessage)second;
+            }
+            else
+            {
+                Order[1].Lexicalization();
+            }
         }
         else
         {
-            first.Lexicalization(_badPoints);
-            second.Lexicalization(_goodPoints);
+            if (_badPoints.Count > 1)
+            {
+                var first = (IMultiLexicalizationMessage)Order[0];
+                first.Lexicalization(_badPoints);
+                Order[0] = (IMessage)first;
+            }
+            else
+            {
+                Order[1].Lexicalization();
+            }
+
+            if (_goodPoints.Count > 1)
+            {
+                var second = (IMultiLexicalizationMessage)Order[1];
+                second.Lexicalization(_goodPoints);
+                Order[1] = (IMessage)second;
+            }
+            else
+            {
+                Order[0].Lexicalization();
+            }
         }
 
-        Order[0] = (IMessage)first;
-        Order[1] = (IMessage)second;
+
         Sentences.Add(Order[0].Core);
         Sentences.Add(Order[1].Core);
     }
