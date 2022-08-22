@@ -52,8 +52,8 @@ public class GoodPointMessage : IMessage, IPointMessage, IMultiLexicalizationMes
             var third = messages[2];
             Sentences = new List<string>
             {
-                $"{Complement[0]} {Lecturer} sukses dalam hal {Answer.Question.Title}, {second.Answer.Question.Title}, dan {third.Answer.Question.Title}, hal ini dapat dilihat dari {Lex.RndNilai()} rata-rata masing-masingnya  sebesar {Answer.Score}, {second.Answer.Score}, dan {third.Answer.Score}",
-                $"{Complement[0]} untuk bagian {Answer.Question.Title},  {second.Answer.Question.Title}, dan {third.Answer.Question.Title}, {Lecturer} sudah menjalankannya dengan baik, adapun nilai yang didapatkan masing-masingnya adalah {Answer.Score}, {second.Answer.Score}, dan {third.Answer.Score}"
+                $"{Complement[0]} {Lecturer} sukses dalam hal {Answer.Question.Title}, {second.Answer.Question.Title}, dan {third.Answer.Question.Title}, hal ini dapat dilihat dari {Lex.RndNilai()} rata-rata masing-masingnya  sebesar {Answer.Score}; {second.Answer.Score}; dan {third.Answer.Score}",
+                $"{Complement[0]} untuk bagian {Answer.Question.Title},  {second.Answer.Question.Title}, dan {third.Answer.Question.Title}, {Lecturer} sudah menjalankannya dengan baik, adapun nilai yang didapatkan masing-masingnya adalah {Answer.Score}; {second.Answer.Score}; dan {third.Answer.Score}"
             };
         }
 

@@ -53,8 +53,8 @@ public class BadPointMessage : IMessage, IPointMessage, IMultiLexicalizationMess
             var third = messages[2];
             Sentences = new List<string>
             {
-                $"{Lecturer} kurang sukses dalam bagian {Answer.Question.Title}, {second.Answer.Question.Title}, dan {third.Answer.Question.Title} dengan {Lex.RndNilai()} masing-masingnya sebesar {Answer.Score}, {second.Answer.Score}, dan {third.Answer.Score}",
-                $"untuk bagian {Answer.Question.Title}, {second.Answer.Question.Title}, dan {third.Answer.Question.Title}, {Lecturer} mendapat hasil yang kurang memuaskan dengan hanya {Lex.RndMendapat()} {Lex.RndNilai()} sebesar {Answer.Score}, {second.Answer.Score}, dan {third.Answer.Score}"
+                $"{Lecturer} kurang sukses dalam bagian {Answer.Question.Title}, {second.Answer.Question.Title}, dan {third.Answer.Question.Title} dengan {Lex.RndNilai()} masing-masingnya sebesar {Answer.Score}; {second.Answer.Score}; dan {third.Answer.Score}",
+                $"untuk bagian {Answer.Question.Title}, {second.Answer.Question.Title}, dan {third.Answer.Question.Title}, {Lecturer} mendapat hasil yang kurang memuaskan dengan hanya {Lex.RndMendapat()} {Lex.RndNilai()} sebesar {Answer.Score}; {second.Answer.Score}; dan {third.Answer.Score}"
             };
             Core = Util.GetRandom(Sentences);
         }
