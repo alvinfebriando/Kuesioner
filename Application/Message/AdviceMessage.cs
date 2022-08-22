@@ -3,7 +3,7 @@ using Kuesioner.Domain.Entities;
 
 namespace Kuesioner.Application.Message;
 
-public class AdviceMessage : IMessage, IMultiLexicalizationMessage
+public class AdviceMessage : IMessage
 {
     public AdviceMessage(string lecturer, IList<string> advices, ILexicalization lex)
     {
@@ -36,12 +36,12 @@ public class AdviceMessage : IMessage, IMultiLexicalizationMessage
         throw new NotImplementedException();
     }
 
-    public void Lexicalization(IList<IPointMessage> messages)
+    public void Lexicalization(IList<Answer> answers)
     {
         var advice = Util.GetRandom(Advices);
-        if (messages.Count == 2)
+        if (answers.Count == 2)
         {
-            var second = Util.GetRandom(messages[1].Answer.Question.Advices);
+            var second = Util.GetRandom(answers[1].Question.Advices);
             Sentences = new List<string>
             {
                 $"Ada beberapa cara yang dapat dilakukan oleh {Lecturer} untuk meningkatkan hasil evaluasi, diantaranya adalah {advice} dan {second}",
@@ -49,10 +49,10 @@ public class AdviceMessage : IMessage, IMultiLexicalizationMessage
             };
             Core = Util.GetRandom(Sentences);
         }
-        else if (messages.Count >= 3)
+        else if (answers.Count >= 3)
         {
-            var second = Util.GetRandom(messages[1].Answer.Question.Advices);
-            var third = Util.GetRandom(messages[2].Answer.Question.Advices);
+            var second = Util.GetRandom(answers[1].Question.Advices);
+            var third = Util.GetRandom(answers[2].Question.Advices);
             Sentences = new List<string>
             {
                 $"Ada beberapa cara yang dapat dilakukan oleh {Lecturer} untuk meningkatkan hasil evaluasi, diantaranya adalah {advice}, {second}, dan {third}",

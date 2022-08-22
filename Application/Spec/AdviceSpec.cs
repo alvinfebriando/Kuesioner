@@ -32,10 +32,9 @@ public class AdviceSpec : ISpec
     {
         if (Advices.Count > 1)
         {
-            var multi = (IMultiLexicalizationMessage)Order[0];
-            var a = Advices.Cast<IPointMessage>().ToList();
-            multi.Lexicalization(a);
-            Order[0] = (IMessage)multi;
+            var multi = (AdviceMessage)Order[0];
+            multi.Lexicalization(Point.Bad);
+            Order[0] = multi;
         }
         else
         {

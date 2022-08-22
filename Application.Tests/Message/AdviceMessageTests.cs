@@ -32,14 +32,14 @@ public class AdviceMessageTests
 
     [Theory]
     [MemberData(nameof(TestData))]
-    public void Lexicalization_MultiAdvice_ChangeCoreValue(List<IPointMessage> messages)
+    public void Lexicalization_MultiAdvice_ChangeCoreValue(List<Answer> answers)
     {
         // Arrange
         const string notExpected = "";
 
 
         // Act
-        _sut.Lexicalization(messages);
+        _sut.Lexicalization(answers);
 
         // Assert
         Assert.NotEqual(notExpected, _sut.Core);
@@ -55,7 +55,7 @@ public class AdviceMessageTests
         var message1 = new BadPointMessage(lecturer, answer1, lex);
         var message2 = new BadPointMessage(lecturer, answer2, lex);
         var message3 = new BadPointMessage(lecturer, answer3, lex);
-        yield return new object[] { new List<IPointMessage> { message1, message2 } };
-        yield return new object[] { new List<IPointMessage> { message1, message2, message3 } };
+        yield return new object[] { new List<Answer> { message1.Answer, message2.Answer } };
+        yield return new object[] { new List<Answer> { message1.Answer, message2.Answer, message3.Answer } };
     }
 }
