@@ -6,16 +6,16 @@ namespace Kuesioner.Application.Spec;
 
 public class AdviceSpec : ISpec
 {
-    public AdviceSpec(string lecturer, Point badPoint, IList<string> structure)
+    public AdviceSpec(string lecturer, Point point, IList<string> structure)
     {
         Lecturer = lecturer;
-        BadPoint = badPoint;
+        Point = point;
         Structure = structure;
         Lex = new Lexicalization.Lexicalization();
     }
 
     public string Lecturer { get; set; }
-    public Point BadPoint { get; set; }
+    public Point Point { get; set; }
     public IList<string> Structure { get; set; }
     private IList<IMessage> Advices { get; } = new List<IMessage>();
     private ILexicalization Lex { get; }
@@ -30,8 +30,19 @@ public class AdviceSpec : ISpec
 
     public void Aggregate()
     {
+        if (Advices.Count > 1)
+        {
+            var multi = (IMultiLexicalizationMessage)Order[0];
+            var a = Advices.Cast<IPointMessage>().ToList();
+            multi.Lexicalization(a);
+            Order[0] = (IMessage)multi;
+        }
+        else
+        {
+            Order[0].Lexicalization();
+        }
+
         Sentences.Add(Order[0].Core);
-        Sentences.Add(Order[1].Core);
     }
 
     public IList<string> Build()
@@ -44,7 +55,7 @@ public class AdviceSpec : ISpec
 
     private void Transform()
     {
-        if (Structure[4] == "no bad") Advices.Add(new NoAdviceMessage(Lecturer, BadPoint.Min.Question.Advices, Lex));
-        foreach (var answer in BadPoint.Bad) Advices.Add(new AdviceMessage(Lecturer, answer.Question.Advices, Lex));
+        if (Structure[4] == "no advice") Advices.Add(new NoAdviceMessage(Lecturer, Point.Min.Question.Advices, Lex));
+        foreach (var answer in Point.Bad) Advices.Add(new AdviceMessage(Lecturer, answer.Question.Advices, Lex));
     }
 }
