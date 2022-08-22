@@ -5,10 +5,17 @@ namespace Kuesioner.Application.MicroPlanning;
 
 public class MicroPlanning : IMicroPlanning
 {
-    public IList<ISpec> CreateMPlan(DPlan dPlan)
+    public MicroPlanning(DPlan dPlan)
     {
-        var content = dPlan.Content;
-        var structure = dPlan.Structure;
+        DPlan = dPlan;
+    }
+
+    public DPlan DPlan { get; set; }
+
+    public IEnumerable<ISpec> CreateMPlan()
+    {
+        var content = DPlan.Content;
+        var structure = DPlan.Structure;
         var overview = new OverviewSpec(content.Lecturer, content.AverageScore, content.RespondentCount, structure);
         var point = new PointSpec(content.Lecturer, content.Point, structure);
         return new List<ISpec>

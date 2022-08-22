@@ -5,5 +5,6 @@ namespace Kuesioner.Application.MicroPlanning;
 
 public interface IMicroPlanning
 {
-    public IList<ISpec> CreateMPlan(DPlan dPlan);
+    public DPlan DPlan { get; set; }
+    public IEnumerable<ISpec> CreateMPlan();
 }
