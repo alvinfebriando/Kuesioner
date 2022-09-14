@@ -4,17 +4,15 @@ namespace Kuesioner.Application.Realization;
 
 public class Realization : IRealization
 {
-    public Realization(IEnumerable<ISpec> mPlan)
+    public Realization(IList<ISpec> mPlan)
     {
         MPlan = mPlan;
+        Formatters = new List<IFormatter>();
     }
 
-    public IEnumerable<ISpec> MPlan { get; set; }
+    public IList<IFormatter> Formatters { get; set; }
 
-    public string Format()
-    {
-        throw new NotImplementedException();
-    }
+    public IList<ISpec> MPlan { get; set; }
 
 
     public List<string> ConvertToSentence()
@@ -26,6 +24,17 @@ public class Realization : IRealization
             output.AddRange(spec.Sentences);
         }
 
+        foreach (var formatter in Formatters)
+            for (var i = 0; i < output.Count; i++)
+                output[i] = formatter.Format(output[i]);
         return output;
+    }
+
+    public void AddFormatter()
+    {
+        Formatters.Add(new TrimFormatter());
+        var x = (PointSpec)MPlan[1];
+        Formatters.Add(new LecturerFormatter(x.Lecturer));
+        Formatters.Add(new CapitalSentenceFormatter());
     }
 }

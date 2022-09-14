@@ -12,7 +12,7 @@ public class MicroPlanning : IMicroPlanning
 
     public DPlan DPlan { get; set; }
 
-    public IEnumerable<ISpec> CreateMPlan()
+    public IList<ISpec> CreateMPlan()
     {
         var content = DPlan.Content;
         var structure = DPlan.Structure;
