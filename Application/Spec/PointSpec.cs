@@ -53,6 +53,7 @@ public class PointSpec : ISpec
                 Order[0].Lexicalization();
             }
 
+            Order[1].EmbedComplement(new Option(Structure[2]));
             if (BadPoints.Count > 1)
             {
                 var second = (IMultiLexicalizationMessage)Order[1];
@@ -74,9 +75,10 @@ public class PointSpec : ISpec
             }
             else
             {
-                Order[1].Lexicalization();
+                Order[0].Lexicalization();
             }
 
+            Order[1].EmbedComplement(new Option(Structure[2]));
             if (GoodPoints.Count > 1)
             {
                 var second = (IMultiLexicalizationMessage)Order[1];
@@ -85,7 +87,7 @@ public class PointSpec : ISpec
             }
             else
             {
-                Order[0].Lexicalization();
+                Order[1].Lexicalization();
             }
         }
 

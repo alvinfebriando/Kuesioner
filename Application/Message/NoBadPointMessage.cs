@@ -22,8 +22,8 @@ public class NoBadPointMessage : IMessage, IPointMessage
     {
         Sentences = new List<string>
         {
-            $"tidak ada bagian yang dinilai kurang memuaskan dengan {Lex.RndNilai()} {Lex.RndTerendah()} sebesar {Answer.Score} untuk pertanyaan {Answer.Question.Title}",
-            $"{Lecturer} sukses menjaga {Lex.RndNilai()} yang didapatkan tidak kurang dari standar dengan {Lex.RndNilai()} {Lex.RndTerendah()} sebesar {Answer.Score} untuk bagian {Answer.Question.Title}"
+            $"{Complement[0]} tidak ada bagian yang dinilai kurang memuaskan dengan {Lex.RndNilai()} {Lex.RndTerendah()} sebesar {Answer.Score} untuk pertanyaan {Answer.Question.Title}",
+            $"{Complement[0]} {Lecturer} sukses menjaga {Lex.RndNilai()} yang didapatkan tidak kurang dari standar dengan {Lex.RndNilai()} {Lex.RndTerendah()} sebesar {Answer.Score} untuk bagian {Answer.Question.Title}"
         };
         Core = Util.GetRandom(Sentences);
     }
