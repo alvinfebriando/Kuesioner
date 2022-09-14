@@ -44,8 +44,8 @@ public class AdviceMessage : IMessage
             var second = Util.GetRandom(answers[1].Question.Advices);
             Sentences = new List<string>
             {
-                $"Ada beberapa cara yang dapat dilakukan oleh {Lecturer} untuk meningkatkan hasil evaluasi, diantaranya adalah {advice} dan {second}",
-                $"Sistem menyarankan {Lecturer} untuk melakukan {advice} dan {second} untuk hasil yang lebih optimal"
+                $"ada beberapa cara yang dapat dilakukan oleh {Lecturer} untuk meningkatkan hasil evaluasi, diantaranya adalah {advice} dan {second}",
+                $"sistem menyarankan {Lecturer} untuk melakukan {advice} dan {second} untuk hasil yang lebih optimal"
             };
             Core = Util.GetRandom(Sentences);
         }
