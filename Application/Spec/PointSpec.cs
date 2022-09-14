@@ -6,9 +6,6 @@ namespace Kuesioner.Application.Spec;
 
 public class PointSpec : ISpec
 {
-    private readonly IList<IPointMessage> _badPoints = new List<IPointMessage>();
-    private readonly IList<IPointMessage> _goodPoints = new List<IPointMessage>();
-
     public PointSpec(string lecturer, Point point, IList<string> structure)
     {
         Lecturer = lecturer;
@@ -16,6 +13,9 @@ public class PointSpec : ISpec
         Structure = structure;
         Lex = new Lexicalization.Lexicalization();
     }
+
+    public IList<IPointMessage> BadPoints { get; set; } = new List<IPointMessage>();
+    public IList<IPointMessage> GoodPoints { get; set; } = new List<IPointMessage>();
 
     public string Lecturer { get; set; }
     public Point Point { get; set; }
@@ -28,13 +28,13 @@ public class PointSpec : ISpec
     {
         if (IsGnG())
         {
-            Order.Add((IMessage)_goodPoints[0]);
-            Order.Add((IMessage)_badPoints[0]);
+            Order.Add((IMessage)GoodPoints[0]);
+            Order.Add((IMessage)BadPoints[0]);
         }
         else
         {
-            Order.Add((IMessage)_badPoints[0]);
-            Order.Add((IMessage)_goodPoints[0]);
+            Order.Add((IMessage)BadPoints[0]);
+            Order.Add((IMessage)GoodPoints[0]);
         }
     }
 
@@ -42,10 +42,10 @@ public class PointSpec : ISpec
     {
         if (IsGnG())
         {
-            if (_goodPoints.Count > 1)
+            if (GoodPoints.Count > 1)
             {
                 var first = (IMultiLexicalizationMessage)Order[0];
-                first.Lexicalization(_goodPoints);
+                first.Lexicalization(GoodPoints);
                 Order[0] = (IMessage)first;
             }
             else
@@ -53,10 +53,10 @@ public class PointSpec : ISpec
                 Order[0].Lexicalization();
             }
 
-            if (_badPoints.Count > 1)
+            if (BadPoints.Count > 1)
             {
                 var second = (IMultiLexicalizationMessage)Order[1];
-                second.Lexicalization(_badPoints);
+                second.Lexicalization(BadPoints);
                 Order[1] = (IMessage)second;
             }
             else
@@ -66,10 +66,10 @@ public class PointSpec : ISpec
         }
         else
         {
-            if (_badPoints.Count > 1)
+            if (BadPoints.Count > 1)
             {
                 var first = (IMultiLexicalizationMessage)Order[0];
-                first.Lexicalization(_badPoints);
+                first.Lexicalization(BadPoints);
                 Order[0] = (IMessage)first;
             }
             else
@@ -77,10 +77,10 @@ public class PointSpec : ISpec
                 Order[1].Lexicalization();
             }
 
-            if (_goodPoints.Count > 1)
+            if (GoodPoints.Count > 1)
             {
                 var second = (IMultiLexicalizationMessage)Order[1];
-                second.Lexicalization(_goodPoints);
+                second.Lexicalization(GoodPoints);
                 Order[1] = (IMessage)second;
             }
             else
@@ -104,10 +104,10 @@ public class PointSpec : ISpec
 
     private void Transform()
     {
-        if (Structure.Contains("no good")) _goodPoints.Add(new NoGoodPointMessage(Lecturer, Point.Max, Lex));
-        if (Structure.Contains("no bad")) _badPoints.Add(new NoBadPointMessage(Lecturer, Point.Min, Lex));
-        foreach (var item in Point.Good) _goodPoints.Add(new GoodPointMessage(Lecturer, item, Lex));
-        foreach (var item in Point.Bad) _badPoints.Add(new BadPointMessage(Lecturer, item, Lex));
+        if (Structure.Contains("no good")) GoodPoints.Add(new NoGoodPointMessage(Lecturer, Point.Max, Lex));
+        if (Structure.Contains("no bad")) BadPoints.Add(new NoBadPointMessage(Lecturer, Point.Min, Lex));
+        foreach (var item in Point.Good) GoodPoints.Add(new GoodPointMessage(Lecturer, item, Lex));
+        foreach (var item in Point.Bad) BadPoints.Add(new BadPointMessage(Lecturer, item, Lex));
     }
 
     private bool IsGnG()
