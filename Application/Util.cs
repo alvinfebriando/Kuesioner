@@ -3,12 +3,12 @@ using Numpy;
 
 namespace Kuesioner.Application;
 
-public class Util
+public static class Util
 {
-    public static T GetRandom<T>(IList<T> ts)
+    public static T GetRandom<T>(IList<T> list)
     {
         Random rnd = new();
-        var element = ts[rnd.Next(0, ts.Count)];
+        var element = list[rnd.Next(0, list.Count)];
         return element;
     }
 
