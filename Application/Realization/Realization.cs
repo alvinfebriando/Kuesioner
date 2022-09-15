@@ -24,6 +24,8 @@ public class Realization : IRealization
             output.AddRange(spec.Sentences);
         }
 
+        AddFormatter();
+
         foreach (var formatter in Formatters)
             for (var i = 0; i < output.Count; i++)
                 output[i] = formatter.Format(output[i]);

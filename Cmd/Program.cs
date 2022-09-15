@@ -27,7 +27,6 @@ var microPlanning = new MicroPlanning(dPlan);
 var mPlan = microPlanning.CreateMPlan();
 
 var realization = new Realization(mPlan);
-realization.AddFormatter();
 var paragraph = realization.ConvertToSentence();
 
 Console.WriteLine(string.Join(". ", paragraph));
